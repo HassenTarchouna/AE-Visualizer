@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+/* ===== FUTURISTIC DESIGN SYSTEM ===== */
+:root {
+  --neon-cyan: #00f2fe;
+  --neon-purple: #4facfe;
+  --neon-pink: #ff2df7;
+  --neon-green: #00ff88;
+  --dark-space: #0a0a1a;
+  --darker-space: #050510;
+  --cyber-metal: #1a1a2e;
+  --hologram-blue: rgba(0, 242, 254, 0.1);
+}
+
+/* ===== BASE STYLES ===== */
+html,
+body,
+#root {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(
+    135deg,
+    var(--dark-space) 0%,
+    var(--darker-space) 50%,
+    #16213e 100%
+  );
+  color: #e2e8f0;
+  font-family: "Inter", "SF Pro Display", system-ui, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== CYBER GRID BACKGROUND ===== */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      rgba(0, 242, 254, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: -1;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* ===== NEON GLOW EFFECTS ===== */
+.glow-cyan {
+  filter: drop-shadow(0 0 10px var(--neon-cyan))
+    drop-shadow(0 0 20px var(--neon-cyan));
+}
+
+.glow-purple {
+  filter: drop-shadow(0 0 10px var(--neon-purple))
+    drop-shadow(0 0 20px var(--neon-purple));
+}
+
+.glow-pink {
+  filter: drop-shadow(0 0 10px var(--neon-pink))
+    drop-shadow(0 0 20px var(--neon-pink));
+}
+
+/* ===== GLASS MORPHISM ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.glass-dark {
+  background: rgba(10, 10, 26, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: 16px;
+}
+
+/* ===== HOLOGRAM EFFECT ===== */
+.hologram {
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    var(--hologram-blue) 50%,
+    transparent 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.hologram::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(0, 242, 254, 0.1) 50%,
+    transparent 100%
+  );
+  animation: hologramShift 3s ease-in-out infinite;
+}
+
+@keyframes hologramShift {
+  0%,
+  100% {
+    transform: translateX(-30%) translateY(-30%) rotate(0deg);
+  }
+  50% {
+    transform: translateX(30%) translateY(30%) rotate(180deg);
+  }
+}
+
+/* ===== CYBER BUTTONS ===== */
+.btn-cyber {
+  background: linear-gradient(
+    135deg,
+    var(--neon-cyan) 0%,
+    var(--neon-purple) 100%
+  );
+  border: none;
+  border-radius: 8px;
+  color: var(--dark-space);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-cyber::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-cyber:hover::before {
+  left: 100%;
+}
+
+.btn-cyber:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 5px 15px rgba(0, 242, 254, 0.4));
+}
+
+/* ===== PULSING ANIMATIONS ===== */
+.pulse-cyber {
+  animation: pulseCyber 2s ease-in-out infinite;
+}
+
+@keyframes pulseCyber {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 242, 254, 0.8), 0 0 60px rgba(0, 242, 254, 0.4);
+  }
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-space);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+}
+
+/* ===== VISUALIZER ENHANCEMENT ===== */
+.visualizer {
+  min-height: 380px;
+  background: rgba(10, 10, 26, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.visualizer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neon-cyan),
+    var(--neon-purple),
+    var(--neon-pink),
+    transparent
+  );
+  animation: scanline 2s linear infinite;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ===== TEXT GRADIENTS ===== */
+.text-gradient-cyan {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== DARK MODE ENHANCEMENT ===== */
+.dark body {
+  background: linear-gradient(135deg, #050510 0%, #0a0a1a 50%, #16213e 100%);
+  color: #cbd5e1;
+}
