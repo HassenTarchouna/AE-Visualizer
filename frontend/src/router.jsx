@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import TSPPage from "./pages/TSPPage";
-import SchedulerPage from "./pages/SchedulerPage";
+import SchedulerPage from "./pages/schedulerPage";
 
 export default function Router() {
   return (
