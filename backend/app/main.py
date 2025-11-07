@@ -9,7 +9,13 @@ app = FastAPI(title="TSP & Scheduler Algorithms API")
 # Allow local dev + frontends to call this API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000", 
+        "https://ae-visualizer-git-master-hassentarchounas-projects.vercel.app",
+        "https://ae-visualizer.vercel.app",  # Your main domain
+        "https://*.vercel.app",  # Allow all Vercel subdomains
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
